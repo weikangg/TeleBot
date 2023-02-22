@@ -12,3 +12,4 @@ Learning points:
 - How to customise Telegram commands
 - How to use env files to set up environment variables using dotenv library (pip install python-dotenv)
 - How to generate requirements.txt programatically (pip freeze > requirements.txt)
+- Using repl.it to host and using uptime robot to ping the website to ensure the website is hosted on the server permanently.
