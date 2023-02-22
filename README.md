@@ -1,4 +1,4 @@
-To use:
+## To use:
 
 ```
 1. Create Telegram Bot & Telegram Group.
@@ -8,7 +8,7 @@ To use:
 5. Run Python Script.
 ```
 
-Key Features:
+## Key Features:
 ```
 1. Send quote to you upon demand.
 2. Send customised quote to you upon demand.
@@ -16,7 +16,7 @@ Key Features:
 4. Delete any customised quote you don't want anymore.
 ```
 
-Learning points:
+## Learning points:
 ```
 - How to set up Telegram bot with python-telegram-bot version 13.7 
 - How to customise Telegram commands with CommandHandler
@@ -27,7 +27,7 @@ Learning points:
 - Using repl.it to host and using uptime robot to ping the website to ensure the website is hosted on the server permanently.
 ```
 
-Technologies:
+## Technologies:
 ```
 - Python
 - PythonTelegramBot API
