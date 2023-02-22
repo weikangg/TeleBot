@@ -3,7 +3,7 @@
 Got accused of being a bot for replying too slowly. Hence, a bot was created to reply in my stead.
 ```
 
-## To use:
+## To use the functionalities:
 
 ```
 1. Create Telegram Bot & Telegram Group.
