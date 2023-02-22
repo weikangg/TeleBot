@@ -11,4 +11,6 @@ Learning points:
 - How to set up Telegram bot with python-telegram-bot version 13.7
 - How to customise Telegram commands
 - How to use env files to set up environment variables using dotenv library (pip install python-dotenv)
+- Getting Quotes from 'https://zenquotes.io/api/random' by sending requests
 - How to generate requirements.txt programatically (pip freeze > requirements.txt)
+- Using repl.it to host and using uptime robot to ping the website to ensure the website is hosted on the server permanently.
