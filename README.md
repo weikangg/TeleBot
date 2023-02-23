@@ -1,4 +1,5 @@
 ## Inspiration:
+
 ```
 Got accused of being a bot for replying too slowly. Hence, a bot was created to reply in my stead.
 ```
@@ -8,12 +9,14 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 ```
 1. Create Telegram Bot & Telegram Group.
 2. Get Telegram Bot API Key.
+3. Create .env file and put API keys in .env file
 3. Replace it in main.py
 4. Install required dependencies
 5. Run Python Script.
 ```
 
 ## Key Features:
+
 ```
 1. Send quote to you upon demand.
 2. Send customised quote to you upon demand.
@@ -23,8 +26,9 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 ```
 
 ## Learning points:
+
 ```
-- How to set up Telegram bot with python-telegram-bot version 13.7 
+- How to set up Telegram bot with python-telegram-bot version 13.7
 - How to customise Telegram commands with CommandHandler
 - How to use env files to set up environment variables using dotenv library (pip install python-dotenv)
 - Holding conversations with others using ConversationHandler
@@ -34,6 +38,7 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 ```
 
 ## Technologies:
+
 ```
 - Python
 - PythonTelegramBot API

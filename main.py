@@ -14,8 +14,9 @@ from telegram.ext.messagehandler import MessageHandler
 from telegram.ext.filters import Filters
 from http.server import BaseHTTPRequestHandler
 
-WEIKANGBOT_ID = os.environ['WEIKANGBOT_ID']
-WEI_TESTBOT_ID = os.environ['WEI_TESTBOT_ID']
+WEIKANGBOT_ID = os.getenv['WEIKANGBOT_ID']
+WEI_TESTBOT_ID = os.getenv['WEI_TESTBOT_ID']
+API_NINJA_ID = os.getenv['API_NINJA_ID']
 
 # Global Variables
 class Global:
@@ -68,6 +69,16 @@ def main():
     # UPDATER
     updater = Updater(WEIKANGBOT_ID,
                     use_context=True)
+    # DAD JOKES
+    def getDadJoke():
+        limit = 1
+        api_url = 'https://api.api-ninjas.com/v1/dadjokes?limit={}'.format(limit)
+        response = requests.get(api_url, headers={'X-Api-Key': API_NINJA_ID})
+        if response.status_code == requests.codes.ok:
+            data = response.json()
+            return data[0]['joke']
+        else:
+            return 'Server overloaded. Try again in a bit.'
 
     # DAILY QUOTES
     def getQuote():
@@ -221,6 +232,11 @@ def main():
         quote = getQuote()
         update.message.reply_text(quote)
 
+    # GET DAD JOKE
+    def dadJoke(update: Update, context: CallbackContext):
+        joke = getDadJoke()
+        update.message.reply_text(joke)
+
     # HELP FUNCTION
     def help(update: Update, context: CallbackContext):
         update.message.reply_text("""Available Commands :
@@ -288,6 +304,7 @@ def main():
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(CommandHandler('hello', hello))
     updater.dispatcher.add_handler(CommandHandler('quote', quote))
+    updater.dispatcher.add_handler(CommandHandler('dadjoke', dadJoke))
     updater.dispatcher.add_handler(CommandHandler('message', message))
     updater.dispatcher.add_handler(CommandHandler('getmessages', getMessages))
     updater.dispatcher.add_handler(CommandHandler('youtube', youtube_url))
