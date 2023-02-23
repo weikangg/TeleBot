@@ -10,7 +10,6 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 1. Create Telegram Bot & Telegram Group.
 2. Get Telegram Bot API Key.
 3. Create .env file and put API keys in .env file
-3. Replace it in main.py
 4. Install required dependencies
 5. Run Python Script.
 ```
