@@ -23,6 +23,7 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 4. Delete any customised quote you don't want anymore.
 5. Choose a message you want to broadcast.
 6. Send a dad joke upon demand.
+7. Get the weather forecast for different areas in Singapore upon demand.
 ```
 
 ## Learning points:
@@ -45,4 +46,5 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 - PythonTelegramBot API
 - Zenquotes API
 - API Ninjas Dad Joke API
+- [Data.gov weather forecast API](https://data.gov.sg/dataset/weather-forecast)
 ```
