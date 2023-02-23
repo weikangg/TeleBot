@@ -41,10 +41,9 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 
 ## Technologies:
 
-```
 - Python
 - PythonTelegramBot API
 - Zenquotes API
 - API Ninjas Dad Joke API
 - [Data.gov weather forecast API](https://data.gov.sg/dataset/weather-forecast/)
-```
+
