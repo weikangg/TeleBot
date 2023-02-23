@@ -2,6 +2,8 @@ import os
 import random
 import requests
 import configparser
+import datetime
+import pandas as pd
 from uuid import uuid4
 from telegram.ext import CallbackQueryHandler, InlineQueryHandler
 from telegram.ext.conversationhandler import ConversationHandler
@@ -236,6 +238,28 @@ def main():
     def dadJoke(update: Update, context: CallbackContext):
         joke = getDadJoke()
         update.message.reply_text(joke)
+    # GET WEATHER
+    def getWeather(update: Update, context: CallbackContext):
+        today = datetime.datetime.today() 
+        params = {"date": today.strftime("%Y-%m-%d")} # YYYY-MM-DD 
+        
+        try:
+            wx_forecast = requests.get('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', params=params)
+            wx_forecast = wx_forecast.json()
+        except:
+            print("System busy now. Try again awhile later.")
+
+        plotDf = pd.DataFrame(wx_forecast['area_metadata']).merge(pd.DataFrame(wx_forecast['items'][-1]['forecasts']).reset_index(), how='inner', left_on='name', right_on='area')
+        plotDf = plotDf[['area','forecast','label_location']]
+        return plotDf
+    # SEND WEATHER
+    def weather(update: Update, context: CallbackContext):  
+        df = getWeather(update,context)
+        text = ''
+        for index, row in df.iterrows():
+            text += f"{index + 1}. {row['area']} - {row['forecast']}"
+            text += '\n'
+        update.message.reply_text(text)
 
     # HELP FUNCTION
     def help(update: Update, context: CallbackContext):
@@ -244,6 +268,8 @@ def main():
         /hello - Say Hi to Wei
         /linkedin - Get Wei's LinkedIn URL.
         /youtube - Get the link to Youtube
+        /dadjoke - Get your dad joke from Wei
+        /sgweather - Get the weather forecast for all areas in Singapore
         /quote - Get your daily quote from Wei
         /message - Get your well-customised message from Wei
         /getmessages - Get the full list of customised messages from Wei
@@ -305,6 +331,7 @@ def main():
     updater.dispatcher.add_handler(CommandHandler('hello', hello))
     updater.dispatcher.add_handler(CommandHandler('quote', quote))
     updater.dispatcher.add_handler(CommandHandler('dadjoke', dadJoke))
+    updater.dispatcher.add_handler(CommandHandler('sgweather', weather))
     updater.dispatcher.add_handler(CommandHandler('message', message))
     updater.dispatcher.add_handler(CommandHandler('getmessages', getMessages))
     updater.dispatcher.add_handler(CommandHandler('youtube', youtube_url))
