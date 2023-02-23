@@ -35,6 +35,7 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 - Holding conversations with others using ConversationHandler
 - Getting Quotes from 'https://zenquotes.io/api/random' by sending requests
 - Getting dad jokes from API Ninja by sending requests
+- Getting weather forecasts from data.gov.sg API
 - How to generate requirements.txt programatically (pip freeze > requirements.txt)
 - Using repl.it to host and using uptime robot to ping the website to ensure the website is hosted on the server permanently.
 ```
