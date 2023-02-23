@@ -23,6 +23,7 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 3. Add customised quote of your preference.
 4. Delete any customised quote you don't want anymore.
 5. Choose a message you want to broadcast.
+6. Send a dad joke upon demand.
 ```
 
 ## Learning points:
@@ -33,6 +34,7 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 - How to use env files to set up environment variables using dotenv library (pip install python-dotenv)
 - Holding conversations with others using ConversationHandler
 - Getting Quotes from 'https://zenquotes.io/api/random' by sending requests
+- Getting dad jokes from API Ninja by sending requests
 - How to generate requirements.txt programatically (pip freeze > requirements.txt)
 - Using repl.it to host and using uptime robot to ping the website to ensure the website is hosted on the server permanently.
 ```
@@ -43,4 +45,5 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 - Python
 - PythonTelegramBot API
 - Zenquotes API
+- API Ninjas Dad Joke API
 ```
