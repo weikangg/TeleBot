@@ -19,6 +19,7 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 2. Send customised quote to you upon demand.
 3. Add customised quote of your preference.
 4. Delete any customised quote you don't want anymore.
+5. Choose a message you want to broadcast.
 ```
 
 ## Learning points:
