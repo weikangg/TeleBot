@@ -24,6 +24,7 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 5. Choose a message you want to broadcast.
 6. Send a dad joke upon demand.
 7. Get the weather forecast for different areas in Singapore upon demand.
+8. Send stickers.
 ```
 
 ## Learning points:
