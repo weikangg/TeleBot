@@ -23,6 +23,7 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 4. Delete any customised quote you don't want anymore.
 5. Choose a message you want to broadcast.
 6. Send a dad joke upon demand.
+7. Get the weather forecast for different areas in Singapore upon demand.
 ```
 
 ## Learning points:
@@ -34,15 +35,16 @@ Got accused of being a bot for replying too slowly. Hence, a bot was created to 
 - Holding conversations with others using ConversationHandler
 - Getting Quotes from 'https://zenquotes.io/api/random' by sending requests
 - Getting dad jokes from API Ninja by sending requests
+- Getting weather forecasts from data.gov.sg API
 - How to generate requirements.txt programatically (pip freeze > requirements.txt)
 - Using repl.it to host and using uptime robot to ping the website to ensure the website is hosted on the server permanently.
 ```
 
 ## Technologies:
 
-```
 - Python
 - PythonTelegramBot API
 - Zenquotes API
 - API Ninjas Dad Joke API
-```
+- [Data.gov weather forecast API](https://data.gov.sg/dataset/weather-forecast/)
+
