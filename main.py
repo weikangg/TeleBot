@@ -110,7 +110,7 @@ def main():
         update.message.reply_text(text)
 
     # GET THE LIST OF MESSAGES
-    def getMessages(update: Update, context: CallbackContext):
+    def get(update: Update, context: CallbackContext):
         messagesList = ''
         for i in range(len(db['messages'])):
           messagesList = messagesList + str(i+1) + '. '
@@ -123,7 +123,7 @@ def main():
         return CHOOSE_QUOTE
 
   # ADDING STATE FOR ADDING CONVERSATION HANDLER
-    def chooseQuote(update: Update, context: CallbackContext):
+    def choose(update: Update, context: CallbackContext):
         quoteNo = update.message.text
         if quoteNo == '-1':
             update.message.reply_text("Good bye.")
@@ -147,7 +147,7 @@ def main():
         return ADDING_QUOTE
 
   # ADDING STATE FOR ADDING CONVERSATION HANDLER
-    def addUserQuote(update: Update, context: CallbackContext):
+    def add(update: Update, context: CallbackContext):
         userQuote = update.message.text
         if userQuote == '-1':
             update.message.reply_text("Good bye.")
@@ -168,7 +168,7 @@ def main():
         return DELETING_QUOTE
 
   # DELETING STATE FOR DELETING CONVERSATION HANDLER
-    def deleteUserQuote(update: Update, context: CallbackContext):
+    def delete(update: Update, context: CallbackContext):
 
         # CONVERT TO INT & ERROR HANDLING.
         try:
@@ -260,7 +260,24 @@ def main():
             text += f"{index + 1}. {row['area']} - {row['forecast']}"
             text += '\n'
         update.message.reply_text(text)
-
+    def sendSticker(update:Update,context:CallbackContext):
+        url = f"https://api.telegram.org/bot{WEIKANGBOT_ID}/sendSticker"
+        
+        payload = {
+            "sticker": "CAACAgIAAxkBAAEdnzdj-JNCqzmit-0UgiYYWRPrWL5sWQACsAEAAonq5Qf7haDhhPGYQS4E",
+            "disable_notification": False,
+            "reply_to_message_id": None,
+            "chat_id": JREMPIRE_ID
+        }
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+        
+        try:
+            requests.post(url, json=payload, headers=headers)
+        except:
+            update.message.reply_text("Servers lagging, wait a little bit.")
     # HELP FUNCTION
     def help(update: Update, context: CallbackContext):
         update.message.reply_text("""Available Commands :
@@ -306,20 +323,20 @@ def main():
     updater.dispatcher.add_handler(ConversationHandler(
         entry_points=[CommandHandler('chooseMessage', introChooseQuotes)],
         states={
-        CHOOSE_QUOTE: [MessageHandler(Filters.text, callback=chooseQuote)]
+        CHOOSE_QUOTE: [MessageHandler(Filters.text, callback=choose)]
         },
         fallbacks=[CommandHandler('quit', quit)]))
     updater.dispatcher.add_handler(ConversationHandler(
-        entry_points=[CommandHandler('addmessages', introAddMessages)],
+        entry_points=[CommandHandler('add', introAddMessages)],
         states={
-            ADDING_QUOTE: [MessageHandler(Filters.text, callback=addUserQuote)]
+            ADDING_QUOTE: [MessageHandler(Filters.text, callback=add)]
         },
         fallbacks=[CommandHandler('quit', quit)]
     ))
     updater.dispatcher.add_handler(ConversationHandler(
-        entry_points=[CommandHandler('deletemessages', introDeleteMessages)],
+        entry_points=[CommandHandler('delete', introDeleteMessages)],
         states={
-            DELETING_QUOTE: [MessageHandler(Filters.text, callback=deleteUserQuote)]
+            DELETING_QUOTE: [MessageHandler(Filters.text, callback=delete)]
         },
         fallbacks=[CommandHandler('quit', quit)]
     ))
@@ -332,8 +349,9 @@ def main():
     updater.dispatcher.add_handler(CommandHandler('quote', quote))
     updater.dispatcher.add_handler(CommandHandler('dadjoke', dadJoke))
     updater.dispatcher.add_handler(CommandHandler('sgweather', weather))
+    updater.dispatcher.add_handler(CommandHandler('sticker', sendSticker))
     updater.dispatcher.add_handler(CommandHandler('message', message))
-    updater.dispatcher.add_handler(CommandHandler('getmessages', getMessages))
+    updater.dispatcher.add_handler(CommandHandler('get', get))
     updater.dispatcher.add_handler(CommandHandler('youtube', youtube_url))
     updater.dispatcher.add_handler(CommandHandler('help', help))
     updater.dispatcher.add_handler(CommandHandler('linkedin', linkedIn_url))
